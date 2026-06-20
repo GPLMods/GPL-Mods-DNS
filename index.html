@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GPL Signing Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- GPL MODS THEME VARIABLES --- */
+        :root {
+            --black: #0a0a0a;
+            --dark-gray: #1a1a1a;
+            --white: #ffffff;
+            --gold: #FFD700;
+            --silver: #c0c0c0;
+            --glow-gold: rgba(255, 215, 0, 0.5);
+            --red: #e53935;
+            --glow-red: rgba(229, 57, 53, 0.5);
+            --green: #43a047;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent; }
+        
+        body { background-color: var(--black); color: var(--white); padding-bottom: 50px; }
+        
+        /* Header */
+        header { padding: 50px 20px 30px; text-align: center; border-bottom: 1px solid #2a2a2a; background-color: var(--dark-gray); border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;}
+        header img { width: 90px; height: 90px; border-radius: 22px; margin-bottom: 15px; border: 2px solid var(--gold); box-shadow: 0 0 15px var(--glow-gold); }
+        header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 5px; color: var(--white); }
+        header h1 span { color: var(--gold); text-shadow: 0 0 10px var(--glow-gold); }
+        header p { color: var(--silver); font-size: 0.95rem; }
+
+        .container { max-width: 600px; margin: 0 auto; padding: 0 15px; }
+        
+        h2 { font-size: 1.2rem; margin: 35px 0 15px 5px; color: var(--gold); display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #333; padding-bottom: 8px;}
+
+        /* iOS Style List Cards with GPL Colors */
+        .list-group { background-color: var(--dark-gray); border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid #333; }
+        
+        .list-item { display: flex; align-items: center; padding: 16px; border-bottom: 1px solid #2a2a2a; transition: background 0.2s; }
+        .list-item:last-child { border-bottom: none; }
+        .list-item:active { background-color: #222; }
+        
+        .item-icon { width: 45px; height: 45px; border-radius: 12px; object-fit: cover; margin-right: 15px; background: var(--black); border: 1px solid #333;}
+        
+        .item-info { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
+        .item-title { font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+        .item-subtitle { font-size: 0.8rem; color: var(--silver); }
+        
+        /* Badges & Buttons */
+        .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; }
+        .status-signed { background-color: var(--green); box-shadow: 0 0 8px var(--green); }
+        .status-revoked { background-color: var(--red); box-shadow: 0 0 8px var(--glow-red); }
+
+        /* Secondary Button (Silver) */
+        .btn-get { background-color: transparent; color: var(--silver); border: 2px solid var(--silver); padding: 6px 18px; border-radius: 20px; font-weight: 700; font-size: 0.85rem; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; }
+        .btn-get:active { transform: scale(0.95); }
+        
+        /* Primary Button (Gold) */
+        .btn-get.primary { background-color: var(--gold); color: var(--black); border-color: var(--gold); box-shadow: 0 0 10px var(--glow-gold); }
+        .btn-get.primary:active { box-shadow: 0 0 15px var(--glow-gold); transform: scale(0.95); }
+
+        /* Loader & Wake Up UI */
+        .loader-container { text-align: center; padding: 60px 20px; background: var(--dark-gray); border-radius: 15px; border: 1px solid #333; margin-top: 30px; }
+        .fa-spinner { animation: spin 1s linear infinite; font-size: 2.5rem; color: var(--gold); margin-bottom: 15px; }
+        .loader-title { color: var(--white); font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; }
+        .loader-subtitle { color: var(--silver); font-size: 0.9rem; line-height: 1.5; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- Ensure you upload your logo to the GitHub repo or keep using the Render link -->
+        <img src="https://gplmods.webredirect.org/images/logo.png" alt="GPL Mods Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/732/732221.png'">
+        <h1>GPL <span>Signing</span></h1>
+        <p>Anti-Revoke DNS & OTA App Installers</p>
+    </header>
+
+    <div class="container" id="content">
+        <!-- Initial Loading State -->
+        <div class="loader-container" id="loading-box">
+            <i class="fas fa-spinner"></i>
+            <div class="loader-title">Connecting to Server...</div>
+            <div class="loader-subtitle" id="loading-text">Fetching the latest certificates and DNS profiles.</div>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. CONFIGURATION ---
+        const API_URL = 'https://ios-api-cach.gplmodsofficial.workers.dev'; 
+        const contentDiv = document.getElementById('content');
+
+        // --- 2. SMART FETCH DATA (HANDLES RENDER SLEEP MODE) ---
+        async function fetchStoreData(retries = 6) { // Retry up to 6 times (1 minute total)
+            try {
+                const response = await fetch(API_URL);
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+                renderUI(data);
+            } catch (error) {
+                console.warn("Fetch failed, server might be sleeping. Retries left:", retries);
+                
+                if (retries > 0) {
+                    // Update UI to tell user what is happening
+                    const loadingBox = document.getElementById('loading-box');
+                    if (loadingBox) {
+                        loadingBox.innerHTML = `
+                            <i class="fas fa-power-off fa-spin" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 15px; display:inline-block;"></i>
+                            <div class="loader-title">Waking up the server...</div>
+                            <div class="loader-subtitle" style="color: var(--gold);">Since this is a free community server, it sleeps when inactive.</div>
+                            <div class="loader-subtitle" style="margin-top: 5px;">It should wake up in about 30-50 seconds. Retrying automatically... (${retries} attempts left)</div>
+                        `;
+                    }
+                    // Wait 10 seconds, then try again
+                    setTimeout(() => fetchStoreData(retries - 1), 10000);
+                } else {
+                    // Give up after 1 minute of trying
+                    contentDiv.innerHTML = `
+                        <div class="loader-container" style="border-color: var(--red);">
+                            <i class="fas fa-exclamation-triangle" style="color: var(--red); font-size: 2.5rem; margin-bottom: 15px;"></i>
+                            <div class="loader-title" style="color: var(--red);">Server Offline</div>
+                            <div class="loader-subtitle">The GPL Mods server is currently unreachable. Please try again later or check our Discord for updates.</div>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        // --- 3. RENDER THE UI ---
+        function renderUI(data) {
+            let html = '';
+
+            // Section 1: DNS Profiles
+            if (data.dns && data.dns.length > 0) {
+                html += `<h2><i class="fas fa-shield-alt"></i> Anti-Revoke DNS (Required)</h2>`;
+                html += `<div class="list-group">`;
+                data.dns.forEach(dns => {
+                    html += `
+                        <div class="list-item">
+                            <img src="${dns.iconUrl || 'https://cdn-icons-png.flaticon.com/512/3003/3003509.png'}" class="item-icon">
+                            <div class="item-info">
+                                <div class="item-title">${dns.name}</div>
+                                <div class="item-subtitle">${dns.description}</div>
+                            </div>
+                            <!-- Recommended DNS gets Gold button, others get Silver -->
+                            <a href="${dns.configUrl}" class="btn-get ${dns.isRecommended ? 'primary' : ''}">Install</a>
+                        </div>
+                    `;
+                });
+                html += `</div>`;
+            }
+
+            // Section 2: Certificates & Apps
+            if (data.certificates && data.certificates.length > 0) {
+                html += `<h2><i class="fas fa-certificate"></i> Available Certificates</h2>`;
+                
+                data.certificates.forEach(cert => {
+                    const statusClass = cert.status === 'Signed' ? 'status-signed' : 'status-revoked';
+                    const isRevoked = cert.status === 'Revoked';
+
+                    html += `<h3 style="font-size: 0.95rem; color: var(--silver); margin: 25px 0 10px 15px; text-transform: uppercase; letter-spacing: 1px;">
+                                <span class="status-dot ${statusClass}"></span> ${cert.name} 
+                                ${isRevoked ? '<span style="color: var(--red); font-size: 0.8em;">(Revoked)</span>' : ''}
+                             </h3>`;
+                    
+                    if (cert.apps && cert.apps.length > 0) {
+                        // If revoked, dim the list and prevent clicks
+                        html += `<div class="list-group" style="${isRevoked ? 'opacity: 0.4; pointer-events: none;' : ''}">`;
+                        
+                        cert.apps.forEach(app => {
+                            const otaLink = `itms-services://?action=download-manifest&url=${encodeURIComponent(app.plistUrl)}`;
+                            
+                            html += `
+                                <div class="list-item">
+                                    <img src="${app.iconUrl || 'https://cdn-icons-png.flaticon.com/512/732/732221.png'}" class="item-icon">
+                                    <div class="item-info">
+                                        <div class="item-title">${app.appName}</div>
+                                        <div class="item-subtitle">Signed with ${cert.name}</div>
+                                    </div>
+                                    <a href="${otaLink}" class="btn-get ${isRevoked ? '' : 'primary'}">${isRevoked ? 'Revoked' : 'Get'}</a>
+                                </div>
+                            `;
+                        });
+                        html += `</div>`;
+                    }
+                });
+            }
+
+            contentDiv.innerHTML = html;
+        }
+
+        // Start the process
+        fetchStoreData();
+    </script>
+</body>
+</html>

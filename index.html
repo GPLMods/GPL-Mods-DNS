@@ -16,66 +16,148 @@
             --white: #ffffff;
             --gold: #FFD700;
             --silver: #c0c0c0;
-            --glow-gold: rgba(255, 215, 0, 0.5);
+            --glow-gold: rgba(255, 215, 0, 0.22);
             --red: #e53935;
-            --glow-red: rgba(229, 57, 53, 0.5);
+            --glow-red: rgba(229, 57, 53, 0.22);
             --green: #43a047;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent; }
         
-        body { background-color: var(--black); color: var(--white); padding-bottom: 50px; }
+        body { background-color: var(--black); color: var(--white); padding-bottom: 50px; min-height: 100vh; }
         
         /* Header */
-        header { padding: 50px 20px 30px; text-align: center; border-bottom: 1px solid #2a2a2a; background-color: var(--dark-gray); border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;}
-        header img { width: 90px; height: 90px; border-radius: 22px; margin-bottom: 15px; border: 2px solid var(--gold); box-shadow: 0 0 15px var(--glow-gold); }
-        header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 5px; color: var(--white); }
-        header h1 span { color: var(--gold); text-shadow: 0 0 10px var(--glow-gold); }
-        header p { color: var(--silver); font-size: 0.95rem; }
+        header { 
+            padding: 45px 20px 25px; 
+            text-align: center; 
+            border-bottom: 1px solid #2a2a2a; 
+            background-color: var(--dark-gray); 
+            border-bottom-left-radius: 25px; 
+            border-bottom-right-radius: 25px;
+            position: relative;
+        }
+        header img { 
+            width: 85px; 
+            height: 85px; 
+            border-radius: 20px; 
+            margin-bottom: 12px; 
+            border: 2px solid var(--gold); 
+            box-shadow: 0 0 10px var(--glow-gold); 
+            object-fit: cover;
+        }
+        header h1 { font-size: 1.9rem; font-weight: 700; margin-bottom: 4px; color: var(--white); }
+        header h1 span { color: var(--gold); text-shadow: 0 0 5px var(--glow-gold); }
+        header p { color: var(--silver); font-size: 0.9rem; }
+
+        .header-actions {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+        }
+        .refresh-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid #333;
+            color: var(--silver);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+        }
+        .refresh-btn:hover, .refresh-btn:active {
+            color: var(--gold);
+            border-color: var(--gold);
+            transform: rotate(90deg);
+        }
 
         .container { max-width: 600px; margin: 0 auto; padding: 0 15px; }
         
-        h2 { font-size: 1.2rem; margin: 35px 0 15px 5px; color: var(--gold); display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #333; padding-bottom: 8px;}
+        h2 { 
+            font-size: 1.15rem; 
+            margin: 30px 0 14px 5px; 
+            color: var(--gold); 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            border-bottom: 1px solid #333; 
+            padding-bottom: 8px;
+        }
 
         /* iOS Style List Cards with GPL Colors */
         .list-group { background-color: var(--dark-gray); border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid #333; }
         
-        .list-item { display: flex; align-items: center; padding: 16px; border-bottom: 1px solid #2a2a2a; transition: background 0.2s; }
+        .list-item { display: flex; align-items: center; padding: 14px 16px; border-bottom: 1px solid #2a2a2a; transition: background 0.2s; }
         .list-item:last-child { border-bottom: none; }
         .list-item:active { background-color: #222; }
         
-        .item-icon { width: 45px; height: 45px; border-radius: 12px; object-fit: cover; margin-right: 15px; background: var(--black); border: 1px solid #333;}
+        .item-icon { 
+            width: 46px; 
+            height: 46px; 
+            border-radius: 12px; 
+            object-fit: cover; 
+            margin-right: 14px; 
+            background: #111; 
+            border: 1px solid #333;
+            flex-shrink: 0;
+            display: block;
+        }
         
-        .item-info { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
-        .item-title { font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 2px; }
-        .item-subtitle { font-size: 0.8rem; color: var(--silver); }
+        .item-info { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+        .item-title { font-size: 0.98rem; font-weight: 600; color: var(--white); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .item-subtitle { font-size: 0.78rem; color: var(--silver); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         
         /* Badges & Buttons */
         .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; }
-        .status-signed { background-color: var(--green); box-shadow: 0 0 8px var(--green); }
-        .status-revoked { background-color: var(--red); box-shadow: 0 0 8px var(--glow-red); }
+        .status-signed { background-color: var(--green); box-shadow: 0 0 6px var(--green); }
+        .status-revoked { background-color: var(--red); box-shadow: 0 0 6px var(--glow-red); }
 
         /* Secondary Button (Silver) */
-        .btn-get { background-color: transparent; color: var(--silver); border: 2px solid var(--silver); padding: 6px 18px; border-radius: 20px; font-weight: 700; font-size: 0.85rem; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; }
+        .btn-get { 
+            background-color: transparent; 
+            color: var(--silver); 
+            border: 1.5px solid var(--silver); 
+            padding: 6px 16px; 
+            border-radius: 20px; 
+            font-weight: 600; 
+            font-size: 0.82rem; 
+            cursor: pointer; 
+            text-decoration: none; 
+            display: inline-block; 
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
         .btn-get:active { transform: scale(0.95); }
         
         /* Primary Button (Gold) */
-        .btn-get.primary { background-color: var(--gold); color: var(--black); border-color: var(--gold); box-shadow: 0 0 10px var(--glow-gold); }
-        .btn-get.primary:active { box-shadow: 0 0 15px var(--glow-gold); transform: scale(0.95); }
+        .btn-get.primary { 
+            background-color: var(--gold); 
+            color: var(--black); 
+            border-color: var(--gold); 
+            box-shadow: 0 0 8px var(--glow-gold); 
+        }
+        .btn-get.primary:active { box-shadow: 0 0 12px var(--glow-gold); transform: scale(0.95); }
 
         /* Loader & Wake Up UI */
-        .loader-container { text-align: center; padding: 60px 20px; background: var(--dark-gray); border-radius: 15px; border: 1px solid #333; margin-top: 30px; }
-        .fa-spinner { animation: spin 1s linear infinite; font-size: 2.5rem; color: var(--gold); margin-bottom: 15px; }
-        .loader-title { color: var(--white); font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; }
-        .loader-subtitle { color: var(--silver); font-size: 0.9rem; line-height: 1.5; }
+        .loader-container { text-align: center; padding: 50px 20px; background: var(--dark-gray); border-radius: 16px; border: 1px solid #333; margin-top: 30px; }
+        .fa-spinner { animation: spin 1s linear infinite; font-size: 2.3rem; color: var(--gold); margin-bottom: 15px; }
+        .loader-title { color: var(--white); font-size: 1.15rem; font-weight: 600; margin-bottom: 8px; }
+        .loader-subtitle { color: var(--silver); font-size: 0.88rem; line-height: 1.5; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
     <header>
-        <!-- Ensure you upload your logo to the GitHub repo or keep using the Render link -->
-        <img src="/logo.png" alt="GPL Mods Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/732/732221.png'">
+        <div class="header-actions">
+            <button class="refresh-btn" onclick="fetchStoreData(1, true)" title="Refresh data">
+                <i class="fas fa-rotate"></i>
+            </button>
+        </div>
+        <img src="/logo.png" alt="GPL Mods Logo" onerror="this.onerror=null; this.src='/favicon.png';">
         <h1>GPL <span>Signing</span></h1>
         <p>Anti-Revoke DNS & OTA App Installers</p>
     </header>
@@ -94,43 +176,113 @@
         const API_URL = 'https://ios-api-cach.gplmodsofficial.workers.dev'; 
         const contentDiv = document.getElementById('content');
 
-        // --- 2. SMART FETCH DATA (HANDLES RENDER SLEEP MODE) ---
-        async function fetchStoreData(retries = 6) { // Retry up to 6 times (1 minute total)
+        // --- 2. LOCAL APP ICONS REGISTRY ---
+        // Maps known app names/keys directly to bundled local icons in the ./icons/ directory
+        const LOCAL_APP_ICONS = {
+            'altstore': 'icons/altstore.png',
+            'cydia': 'icons/cydia.png',
+            'droidify': 'icons/droidify.png',
+            'esign': 'icons/esign.png',
+            'feather': 'icons/feather.png',
+            'installer': 'icons/installer.png',
+            'ksign': 'icons/ksign.png',
+            'livecontainer': 'icons/livecontainer.png',
+            'neostore': 'icons/neostore.png',
+            'purepkg': 'icons/purepkg.png',
+            'saily': 'icons/saily.png',
+            'scarlet': 'icons/scarlet.png',
+            'sidestore': 'icons/sidestore.png',
+            'sileo': 'icons/sileo.png',
+            'trollstore': 'icons/trollstore.png',
+            'zebra': 'icons/zebra.png'
+        };
+
+        /**
+         * Resolves the app icon prioritizing bundled local icons
+         */
+        function resolveAppIcon(app) {
+            const rawIcon = (app.iconUrl || '').trim();
+
+            // A. If a custom external URL is explicitly set (and not the generic flaticon fallback)
+            if ((rawIcon.startsWith('http://') || rawIcon.startsWith('https://')) && !rawIcon.includes('flaticon.com')) {
+                return rawIcon;
+            }
+
+            // B. If a local filename or path was specified (e.g. "icons/esign.png", "esign.png", or "esign")
+            if (rawIcon) {
+                const clean = rawIcon.replace(/^(./|/|icons/)+/, '').toLowerCase();
+                const key = clean.replace(/\.(png|jpe?g|webp|svg)$/i, '');
+                if (LOCAL_APP_ICONS[key]) {
+                    return LOCAL_APP_ICONS[key];
+                }
+                if (rawIcon.startsWith('icons/') || rawIcon.startsWith('./icons/')) {
+                    return rawIcon;
+                }
+            }
+
+            // C. Auto-detect from App Name
+            const nameKey = (app.appName || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+            for (const [key, iconPath] of Object.entries(LOCAL_APP_ICONS)) {
+                if (nameKey.includes(key) || key.includes(nameKey)) {
+                    return iconPath;
+                }
+            }
+
+            // D. Clean fallback icon
+            return '/logo.png';
+        }
+
+        /**
+         * Resolves the DNS profile icon
+         */
+        function resolveDnsIcon(dns) {
+            const rawIcon = (dns.iconUrl || '').trim();
+            if ((rawIcon.startsWith('http://') || rawIcon.startsWith('https://')) && !rawIcon.includes('flaticon.com')) {
+                return rawIcon;
+            }
+            if (rawIcon && (rawIcon.startsWith('icons/') || rawIcon.startsWith('./icons/'))) {
+                return rawIcon;
+            }
+            return '/favicon.png';
+        }
+
+        // --- 3. SMART FETCH DATA (HANDLES EDGE CACHE & RENDER SLEEP MODE) ---
+        async function fetchStoreData(retries = 6, isManual = false) {
             try {
-                const response = await fetch(API_URL);
-                if (!response.ok) throw new Error('Network response was not ok');
+                // If manual refresh, pass cache buster to force check
+                const fetchUrl = isManual ? `${API_URL}?_t=${Date.now()}` : API_URL;
+                const response = await fetch(fetchUrl);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const data = await response.json();
                 renderUI(data);
             } catch (error) {
-                console.warn("Fetch failed, server might be sleeping. Retries left:", retries);
+                console.warn("Fetch failed, server might be waking up. Retries left:", retries, error);
                 
                 if (retries > 0) {
-                    // Update UI to tell user what is happening
                     const loadingBox = document.getElementById('loading-box');
                     if (loadingBox) {
                         loadingBox.innerHTML = `
-                            <i class="fas fa-power-off fa-spin" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 15px; display:inline-block;"></i>
+                            <i class="fas fa-power-off fa-spin" style="font-size: 2.3rem; color: var(--gold); margin-bottom: 15px; display:inline-block;"></i>
                             <div class="loader-title">Waking up the server...</div>
                             <div class="loader-subtitle" style="color: var(--gold);">Since this is a free community server, it sleeps when inactive.</div>
                             <div class="loader-subtitle" style="margin-top: 5px;">It should wake up in about 30-50 seconds. Retrying automatically... (${retries} attempts left)</div>
                         `;
                     }
-                    // Wait 10 seconds, then try again
                     setTimeout(() => fetchStoreData(retries - 1), 10000);
                 } else {
-                    // Give up after 1 minute of trying
                     contentDiv.innerHTML = `
                         <div class="loader-container" style="border-color: var(--red);">
-                            <i class="fas fa-exclamation-triangle" style="color: var(--red); font-size: 2.5rem; margin-bottom: 15px;"></i>
+                            <i class="fas fa-exclamation-triangle" style="color: var(--red); font-size: 2.3rem; margin-bottom: 15px;"></i>
                             <div class="loader-title" style="color: var(--red);">Server Offline</div>
-                            <div class="loader-subtitle">The GPL Mods server is currently unreachable. Please try again later or check our Discord for updates.</div>
+                            <div class="loader-subtitle">The GPL Mods server is currently unreachable. Please try again later or check our Telegram/Discord for updates.</div>
+                            <button onclick="fetchStoreData(3, true)" class="btn-get primary" style="margin-top: 15px;">Retry Connection</button>
                         </div>
                     `;
                 }
             }
         }
 
-        // --- 3. RENDER THE UI ---
+        // --- 4. RENDER THE UI ---
         function renderUI(data) {
             let html = '';
 
@@ -139,14 +291,14 @@
                 html += `<h2><i class="fas fa-shield-alt"></i> Anti-Revoke DNS (Required)</h2>`;
                 html += `<div class="list-group">`;
                 data.dns.forEach(dns => {
+                    const icon = resolveDnsIcon(dns);
                     html += `
                         <div class="list-item">
-                            <img src="${dns.iconUrl || 'https://cdn-icons-png.flaticon.com/512/3003/3003509.png'}" class="item-icon">
+                            <img src="${icon}" class="item-icon" onerror="this.onerror=null; this.src='/favicon.png';">
                             <div class="item-info">
-                                <div class="item-title">${dns.name}</div>
-                                <div class="item-subtitle">${dns.description}</div>
+                                <div class="item-title">${escapeHtml(dns.name)}</div>
+                                <div class="item-subtitle">${escapeHtml(dns.description)}</div>
                             </div>
-                            <!-- Recommended DNS gets Gold button, others get Silver -->
                             <a href="${dns.configUrl}" class="btn-get ${dns.isRecommended ? 'primary' : ''}">Install</a>
                         </div>
                     `;
@@ -162,24 +314,24 @@
                     const statusClass = cert.status === 'Signed' ? 'status-signed' : 'status-revoked';
                     const isRevoked = cert.status === 'Revoked';
 
-                    html += `<h3 style="font-size: 0.95rem; color: var(--silver); margin: 25px 0 10px 15px; text-transform: uppercase; letter-spacing: 1px;">
-                                <span class="status-dot ${statusClass}"></span> ${cert.name} 
-                                ${isRevoked ? '<span style="color: var(--red); font-size: 0.8em;">(Revoked)</span>' : ''}
+                    html += `<h3 style="font-size: 0.95rem; color: var(--silver); margin: 25px 0 10px 10px; text-transform: uppercase; letter-spacing: 1px;">
+                                <span class="status-dot ${statusClass}"></span> ${escapeHtml(cert.name)} 
+                                ${isRevoked ? '<span style="color: var(--red); font-size: 0.8em; margin-left: 6px;">(Revoked)</span>' : ''}
                              </h3>`;
                     
                     if (cert.apps && cert.apps.length > 0) {
-                        // If revoked, dim the list and prevent clicks
-                        html += `<div class="list-group" style="${isRevoked ? 'opacity: 0.4; pointer-events: none;' : ''}">`;
+                        html += `<div class="list-group" style="${isRevoked ? 'opacity: 0.45; pointer-events: none;' : ''}">`;
                         
                         cert.apps.forEach(app => {
                             const otaLink = `itms-services://?action=download-manifest&url=${encodeURIComponent(app.plistUrl)}`;
+                            const appIcon = resolveAppIcon(app);
                             
                             html += `
                                 <div class="list-item">
-                                    <img src="${app.iconUrl || 'https://cdn-icons-png.flaticon.com/512/732/732221.png'}" class="item-icon">
+                                    <img src="${appIcon}" class="item-icon" onerror="this.onerror=null; this.src='/logo.png';">
                                     <div class="item-info">
-                                        <div class="item-title">${app.appName}</div>
-                                        <div class="item-subtitle">Signed with ${cert.name}</div>
+                                        <div class="item-title">${escapeHtml(app.appName)}</div>
+                                        <div class="item-subtitle">Signed with ${escapeHtml(cert.name)}</div>
                                     </div>
                                     <a href="${otaLink}" class="btn-get ${isRevoked ? '' : 'primary'}">${isRevoked ? 'Revoked' : 'Get'}</a>
                                 </div>
@@ -190,7 +342,27 @@
                 });
             }
 
+            if (!html) {
+                html = `
+                    <div class="loader-container">
+                        <i class="fas fa-info-circle" style="color: var(--gold); font-size: 2rem; margin-bottom: 12px;"></i>
+                        <div class="loader-title">No Profiles Available</div>
+                        <div class="loader-subtitle">Check back soon for updated signed profiles and certificates.</div>
+                    </div>
+                `;
+            }
+
             contentDiv.innerHTML = html;
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            return String(text)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
         }
 
         // Start the process

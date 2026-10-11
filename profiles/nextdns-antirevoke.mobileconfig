@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>DNSSettings</key>
+            <dict>
+                <key>DNSProtocol</key>
+                <string>HTTPS</string>
+                <key>ServerURL</key>
+                <string>https://apple.nextdns.io</string>
+            </dict>
+            <key>PayloadDescription</key>
+            <string>NextDNS Zero-Log Anti-Revoke profile blocking Apple OCSP certification verification servers.</string>
+            <key>PayloadDisplayName</key>
+            <string>NextDNS Anti-Revoke Shield</string>
+            <key>PayloadIdentifier</key>
+            <string>io.nextdns.antirevoke.managed</string>
+            <key>PayloadType</key>
+            <string>com.apple.dnsSettings.managed</string>
+            <key>PayloadUUID</key>
+            <string>4C3B2A1D-9E8F-4A7B-9C0D-1E2F3A4B5C6D</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>ProhibitDisablement</key>
+            <false/>
+        </dict>
+    </array>
+    <key>PayloadDescription</key>
+    <string>NextDNS Zero-Log Anti-Revoke profile configuration for iOS and iPadOS.</string>
+    <key>PayloadDisplayName</key>
+    <string>NextDNS Anti-Revoke Shield</string>
+    <key>PayloadIdentifier</key>
+    <string>io.nextdns.antirevoke</string>
+    <key>PayloadOrganization</key>
+    <string>NextDNS / GPL Mods Archive</string>
+    <key>PayloadRemovalDisallowed</key>
+    <false/>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>8E7F6A5B-4C3D-2E1F-0A9B-8C7D6E5F4A3B</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

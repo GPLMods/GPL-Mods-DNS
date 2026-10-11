@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>DNSSettings</key>
+            <dict>
+                <key>DNSProtocol</key>
+                <string>HTTPS</string>
+                <key>ServerURL</key>
+                <string>https://dns.adguard-dns.com/dns-query</string>
+                <key>ServerAddresses</key>
+                <array>
+                    <string>94.140.14.14</string>
+                    <string>94.140.15.15</string>
+                    <string>2a10:50c0::ad1:ff</string>
+                    <string>2a10:50c0::ad2:ff</string>
+                </array>
+            </dict>
+            <key>PayloadDescription</key>
+            <string>Filters Apple OCSP revocation domains (ocsp.apple.com, valid.apple.com) and prevents sideloaded app revokes.</string>
+            <key>PayloadDisplayName</key>
+            <string>GPL Mods Anti-Revoke Ultra</string>
+            <key>PayloadIdentifier</key>
+            <string>org.gplmods.dns.antirevoke.managed</string>
+            <key>PayloadType</key>
+            <string>com.apple.dnsSettings.managed</string>
+            <key>PayloadUUID</key>
+            <string>7B9E3A4D-8F21-4A55-9B3C-7D9421A65E10</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>ProhibitDisablement</key>
+            <false/>
+        </dict>
+    </array>
+    <key>PayloadDescription</key>
+    <string>Official GPL Mods iOS Anti-Revoke Encrypted DNS Configuration. Protects enterprise certificates and sideloaded IPAs from revocation.</string>
+    <key>PayloadDisplayName</key>
+    <string>GPL Mods Anti-Revoke Ultra</string>
+    <key>PayloadIdentifier</key>
+    <string>org.gplmods.dns.antirevoke</string>
+    <key>PayloadOrganization</key>
+    <string>GPL Mods Official</string>
+    <key>PayloadRemovalDisallowed</key>
+    <false/>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>9F2A6C88-3B51-4E77-A01D-2C5E87D439F1</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

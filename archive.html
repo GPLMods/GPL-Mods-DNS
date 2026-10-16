@@ -1,0 +1,2357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>GPL Signing & Anti-Revoke DNS Archive | #GPLMods #AntiRevoke #iOSSigning</title>
+
+    <!-- SEO & Social Meta Tags with Related Hashtags -->
+    <meta name="description"
+        content="Official GPL Mods Anti-Revoke DNS Archive & iOS Signing Hub. Protect your sideloaded apps from Apple certificate revocations. Install DNS profiles and signed enterprise apps including ESign, Scarlet, and TrollStore without jailbreak. #GPLMods #AntiRevoke #iOSSigning #NoJailbreak #ESign #Scarlet #TrollStore">
+    <meta name="keywords"
+        content="#GPLMods, #AntiRevoke, #iOSSigning, #NoJailbreak, #ESign, #Scarlet, #TrollStore, #SideStore, #LiveContainer, #Feather, #KSign, #AltStore, #DNSProfile, #Sideloading, #IPASigner, #AppleCertificates">
+    <meta name="author" content="GPL Mods Official">
+    <meta name="theme-color" content="#FFD700">
+
+    <meta property="og:title" content="GPL Signing & Anti-Revoke DNS Archive">
+    <meta property="og:description"
+        content="Anti-Revoke DNS Profiles & OTA App Installers for iOS. Stop revokes on ESign, Scarlet, TrollStore. #GPLMods #AntiRevoke #iOSSigning">
+    <meta property="og:image" content="./logo.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GPL Mods DNS Archive">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GPL Signing & Anti-Revoke DNS Archive">
+    <meta name="twitter:description"
+        content="Anti-Revoke DNS Profiles & Enterprise OTA App Installers. #GPLMods #AntiRevoke #iOSSigning">
+    <meta name="twitter:image" content="./logo.png">
+
+    <!-- PWA & Mobile Web App Capabilities -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="GPL Mods">
+
+    <!-- Favicons & Apple Touch Icons -->
+    <link rel="icon" type="image/png" href="./favicon.png">
+    <link rel="apple-touch-icon" href="./favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon.png">
+
+    <!-- Google Fonts, Font Awesome Icons & Lipis Flag Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
+
+    <style>
+        /* =========================================================
+           GPL MODS OFFICIAL DESIGN SYSTEM - HIGH-GLOW & POLISHED UI
+           ========================================================= */
+        :root {
+            --black: #0a0a0a;
+            --dark-gray: #141722;
+            --card-bg: rgba(20, 23, 34, 0.88);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-card: #252a3d;
+            --border-card-hover: rgba(255, 215, 0, 0.45);
+            --white: #ffffff;
+            --gold: #FFD700;
+            --gold-dark: #cca400;
+            --gold-light: #ffe866;
+            --silver: #c0c0c0;
+            --silver-light: #e0e0e0;
+            --green: #43a047;
+            --green-bright: #4caf50;
+            --red: #e53935;
+            --cyan: #00e5ff;
+            --blue: #2196f3;
+            --amber: #f39c12;
+
+            /* High-Intensity Vibrant Glows */
+            --glow-gold: rgba(255, 215, 0, 0.55);
+            --glow-gold-deep: rgba(255, 215, 0, 0.25);
+            --glow-silver: rgba(192, 192, 192, 0.55);
+            --glow-green: rgba(67, 160, 71, 0.65);
+            --glow-red: rgba(229, 57, 53, 0.65);
+            --glow-cyan: rgba(0, 229, 255, 0.45);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* =========================================================
+           BULLETPROOF IMAGE DOWNLOAD & LONG-PRESS EXTRACTION SHIELD
+           ========================================================= */
+        img,
+        .logo-img,
+        .item-icon {
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+            -khtml-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-user-drag: none !important;
+            user-drag: none !important;
+            pointer-events: none !important;
+            /* Disables browser hit-testing for long-press image menus */
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            padding-bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image:
+                radial-gradient(circle at 50% -10%, #1c2238 0%, #0a0a0a 70%),
+                linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+            background-size: 100% 100%, 32px 32px, 32px 32px;
+        }
+
+        /* Ambient floating backdrop glow orbs */
+        .ambient-glow {
+            position: fixed;
+            width: clamp(280px, 45vw, 520px);
+            height: clamp(280px, 45vw, 520px);
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(120px);
+            z-index: 0;
+            opacity: 0.18;
+            transition: all 0.8s ease;
+        }
+
+        .glow-top-left {
+            top: -140px;
+            left: -140px;
+            background: var(--gold);
+        }
+
+        .glow-bottom-right {
+            bottom: -140px;
+            right: -140px;
+            background: var(--cyan);
+        }
+
+        .glow-center {
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 350px;
+            background: rgba(255, 215, 0, 0.08);
+            opacity: 0.12;
+        }
+
+        /* =========================================================
+           TOP TELEMETRY & NAVIGATION BAR
+           ========================================================= */
+        .top-nav-bar {
+            width: 100%;
+            max-width: 820px;
+            padding: 14px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .telemetry-chip-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .telemetry-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 5px 12px;
+            background: rgba(18, 21, 32, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            font-size: 0.78em;
+            color: var(--silver);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+            transition: all 0.25s ease;
+        }
+
+        .telemetry-chip:hover {
+            border-color: rgba(255, 215, 0, 0.4);
+            color: var(--white);
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.2);
+        }
+
+        .telemetry-chip .fi {
+            font-size: 1.05em;
+            border-radius: 3px;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .status-dot-pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--green-bright);
+            box-shadow: 0 0 10px var(--glow-green);
+            animation: pulseDotGreen 1.8s infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes pulseDotGreen {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                box-shadow: 0 0 10px var(--glow-green);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(0.85);
+                box-shadow: 0 0 4px var(--glow-green);
+            }
+        }
+
+        .status-dot-pulse.dot-gold {
+            background-color: var(--gold);
+            box-shadow: 0 0 10px var(--glow-gold);
+            animation: pulseDotGold 1.8s infinite;
+        }
+
+        @keyframes pulseDotGold {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                box-shadow: 0 0 10px var(--glow-gold);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(0.85);
+                box-shadow: 0 0 4px var(--glow-gold);
+            }
+        }
+
+        .status-dot-pulse.dot-amber {
+            background-color: var(--amber);
+            box-shadow: 0 0 10px rgba(243, 156, 18, 0.65);
+            animation: pulseDotAmber 1.8s infinite;
+        }
+
+        @keyframes pulseDotAmber {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                box-shadow: 0 0 10px rgba(243, 156, 18, 0.65);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(0.85);
+                box-shadow: 0 0 4px rgba(243, 156, 18, 0.65);
+            }
+        }
+
+        .status-dot-pulse.dot-silver {
+            background-color: var(--silver);
+            box-shadow: 0 0 10px var(--glow-silver);
+            animation: pulseDotSilver 1.8s infinite;
+        }
+
+        @keyframes pulseDotSilver {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                box-shadow: 0 0 10px var(--glow-silver);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(0.85);
+                box-shadow: 0 0 4px var(--glow-silver);
+            }
+        }
+
+        .status-dot-pulse.dot-cyan {
+            background-color: var(--cyan);
+            box-shadow: 0 0 10px var(--glow-cyan);
+            animation: pulseDotCyan 1.8s infinite;
+        }
+
+        @keyframes pulseDotCyan {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                box-shadow: 0 0 10px var(--glow-cyan);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(0.85);
+                box-shadow: 0 0 4px var(--glow-cyan);
+            }
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-nav-action {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: var(--silver);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.78em;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(8px);
+            text-decoration: none;
+        }
+
+        .btn-nav-action:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+            transform: translateY(-1px);
+            box-shadow: 0 0 14px var(--glow-gold);
+        }
+
+        /* =========================================================
+           HEADER WITH HIGH-AURA LOGO & GLOW
+           ========================================================= */
+        header {
+            width: 100%;
+            max-width: 820px;
+            padding: 32px 22px 26px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(22, 26, 40, 0.92) 0%, rgba(14, 16, 26, 0.96) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.28);
+            border-radius: 26px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.75), 0 0 35px rgba(255, 215, 0, 0.15);
+            position: relative;
+            margin: 6px auto 24px;
+            z-index: 5;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), var(--silver), var(--gold), transparent);
+            box-shadow: 0 0 14px var(--glow-gold);
+            opacity: 0.95;
+        }
+
+        /* High-Aura Glowing Logo Structure with Download Protection Shield */
+        .logo-wrapper {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none !important;
+            border-radius: 24px;
+        }
+
+        /* Transparent touch-shield absorbs long-press/contextmenu on mobile & desktop */
+        .logo-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            z-index: 5;
+            background: transparent;
+            pointer-events: auto;
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+            user-select: none !important;
+            -webkit-user-drag: none !important;
+        }
+
+        .logo-glow-aura {
+            position: absolute;
+            width: 110%;
+            height: 110%;
+            border-radius: 28px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.5) 0%, rgba(255, 170, 0, 0.2) 50%, transparent 70%);
+            filter: blur(18px);
+            z-index: 0;
+            animation: logoPulseGlow 3.2s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes logoPulseGlow {
+            0% {
+                transform: scale(0.92);
+                opacity: 0.6;
+                filter: blur(16px);
+            }
+
+            100% {
+                transform: scale(1.15);
+                opacity: 1;
+                filter: blur(24px);
+            }
+        }
+
+        .logo-img {
+            position: relative;
+            z-index: 1;
+            width: clamp(82px, 16vw, 94px);
+            height: clamp(82px, 16vw, 94px);
+            border-radius: 24px;
+            border: 2px solid var(--gold);
+            object-fit: cover;
+            display: block;
+            background: #000;
+            box-shadow:
+                0 0 20px var(--glow-gold),
+                0 0 45px rgba(255, 215, 0, 0.3),
+                inset 0 0 15px rgba(255, 215, 0, 0.25),
+                0 10px 25px rgba(0, 0, 0, 0.9);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none !important;
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+            user-select: none !important;
+            -webkit-user-drag: none !important;
+        }
+
+        .logo-wrapper:hover .logo-img,
+        .logo-img:hover {
+            transform: translateY(-3px) scale(1.06) rotate(1.5deg);
+            border-color: #ffe666;
+            box-shadow:
+                0 0 32px var(--glow-gold),
+                0 0 65px rgba(255, 215, 0, 0.5),
+                inset 0 0 20px rgba(255, 215, 0, 0.4),
+                0 15px 35px rgba(0, 0, 0, 0.95);
+        }
+
+        header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.85rem, 5vw, 2.35rem);
+            font-weight: 800;
+            margin-bottom: 6px;
+            color: var(--white);
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .logo-gold-glow {
+            color: var(--gold);
+            text-shadow: 0 0 14px var(--glow-gold), 0 0 28px rgba(255, 215, 0, 0.4);
+        }
+
+        .logo-silver-glow {
+            color: var(--silver);
+            text-shadow: 0 0 12px var(--glow-silver);
+        }
+
+        .archive-badge {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.45em;
+            padding: 3px 10px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 170, 0, 0.08) 100%);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 0 12px var(--glow-gold-deep);
+            vertical-align: middle;
+        }
+
+        header p {
+            color: var(--silver-light);
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+            line-height: 1.55;
+            max-width: 540px;
+            margin: 0 auto 16px;
+        }
+
+        /* =========================================================
+           RELATED HASHTAGS STRIP & INTERACTIVE PILLS
+           ========================================================= */
+        .hashtag-section {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .hashtag-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.76rem;
+            color: var(--silver);
+            padding: 0 4px;
+        }
+
+        .hashtag-header-row span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+        }
+
+        .btn-copy-hashtags {
+            background: transparent;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: var(--gold);
+            padding: 3px 9px;
+            border-radius: 12px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.25s ease;
+        }
+
+        .btn-copy-hashtags:hover {
+            background: rgba(255, 215, 0, 0.15);
+            box-shadow: 0 0 10px var(--glow-gold);
+            transform: translateY(-1px);
+        }
+
+        .hashtag-cloud {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .hashtag-pill {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            color: var(--silver);
+            padding: 5px 11px;
+            border-radius: 16px;
+            font-size: 0.74em;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            user-select: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .hashtag-pill:hover {
+            background: rgba(255, 215, 0, 0.12);
+            color: var(--gold);
+            border-color: rgba(255, 215, 0, 0.4);
+            transform: translateY(-1px);
+            box-shadow: 0 0 10px var(--glow-gold-deep);
+        }
+
+        .hashtag-pill.active {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.22) 0%, rgba(255, 170, 0, 0.12) 100%);
+            color: var(--gold);
+            border-color: var(--gold);
+            box-shadow: 0 0 14px var(--glow-gold);
+            transform: translateY(-1px);
+            font-weight: 700;
+        }
+
+        /* =========================================================
+           CONTAINER & CATEGORY SEGMENTED CONTROLS
+           ========================================================= */
+        .container {
+            max-width: 820px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 16px;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* Category Segmented Tabs */
+        .category-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .category-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            background: rgba(20, 23, 34, 0.85);
+            border: 1px solid var(--border-card);
+            color: var(--silver);
+            padding: 9px 18px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.25s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .tab-btn:hover {
+            border-color: rgba(255, 215, 0, 0.35);
+            color: var(--white);
+            transform: translateY(-1px);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.16) 0%, rgba(20, 23, 34, 0.95) 100%);
+            border-color: var(--gold);
+            color: var(--gold);
+            box-shadow: 0 0 15px var(--glow-gold-deep), 0 4px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        .tab-count-badge {
+            font-size: 0.72em;
+            padding: 2px 7px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--silver-light);
+        }
+
+        .tab-btn.active .tab-count-badge {
+            background: var(--gold);
+            color: var(--black);
+            font-weight: 800;
+        }
+
+        /* =========================================================
+           QUICK SETUP ACCORDION / GUIDE
+           ========================================================= */
+        .guide-accordion {
+            background: var(--card-bg);
+            border: 1px solid var(--border-card);
+            border-radius: 18px;
+            margin-bottom: 22px;
+            overflow: hidden;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .guide-accordion:hover {
+            border-color: rgba(255, 215, 0, 0.35);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 16px rgba(255, 215, 0, 0.1);
+        }
+
+        .guide-header {
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+            background: rgba(255, 255, 255, 0.02);
+            transition: background 0.25s ease;
+        }
+
+        .guide-header:hover {
+            background: rgba(255, 215, 0, 0.05);
+        }
+
+        .guide-header-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .guide-header-title i {
+            color: var(--gold);
+            text-shadow: 0 0 10px var(--glow-gold);
+            font-size: 1.1em;
+        }
+
+        .guide-toggle-icon {
+            color: var(--silver);
+            font-size: 0.88em;
+            transition: transform 0.3s ease;
+        }
+
+        .guide-accordion.open .guide-toggle-icon {
+            transform: rotate(180deg);
+            color: var(--gold);
+        }
+
+        .guide-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.35s ease;
+            padding: 0 20px;
+            color: var(--silver-light);
+            font-size: 0.84rem;
+            line-height: 1.6;
+        }
+
+        .guide-accordion.open .guide-body {
+            max-height: 600px;
+            padding: 14px 20px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .step-item {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+
+        .step-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-badge {
+            background: linear-gradient(135deg, var(--gold) 0%, #ffaa00 100%);
+            color: var(--black);
+            font-weight: 800;
+            font-size: 0.74em;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 0 10px var(--glow-gold);
+            margin-top: 2px;
+        }
+
+        .step-text strong {
+            color: var(--white);
+        }
+
+        .step-text code {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--gold);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        /* =========================================================
+           LIVE SEARCH & FILTER BAR
+           ========================================================= */
+        .search-box-wrapper {
+            position: relative;
+            margin-bottom: 22px;
+            width: 100%;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 13px 44px 13px 44px;
+            background: rgba(18, 21, 32, 0.88);
+            border: 1px solid var(--border-card);
+            border-radius: 25px;
+            color: var(--white);
+            font-size: 0.9rem;
+            outline: none;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.25s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 18px var(--glow-gold), 0 8px 25px rgba(0, 0, 0, 0.65);
+        }
+
+        .search-icon-left {
+            position: absolute;
+            left: 17px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--silver);
+            font-size: 0.95em;
+            pointer-events: none;
+        }
+
+        .search-clear-btn {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: var(--silver);
+            cursor: pointer;
+            font-size: 0.95em;
+            display: none;
+            padding: 4px;
+        }
+
+        .search-clear-btn:hover {
+            color: var(--gold);
+        }
+
+        /* =========================================================
+           SECTION HEADINGS & BADGES
+           ========================================================= */
+        .section-heading {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.18rem;
+            font-weight: 700;
+            margin: 28px 0 14px 4px;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #282c3c;
+            padding-bottom: 8px;
+        }
+
+        .section-heading-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 0 0 12px var(--glow-gold-deep);
+        }
+
+        .section-count-chip {
+            font-size: 0.72em;
+            padding: 3px 9px;
+            border-radius: 10px;
+            background: rgba(255, 215, 0, 0.12);
+            color: var(--gold);
+            border: 1px solid rgba(255, 215, 0, 0.28);
+            font-weight: 700;
+        }
+
+        /* Certificate Group Header */
+        .cert-header {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.94rem;
+            font-weight: 700;
+            color: var(--silver-light);
+            margin: 24px 0 12px 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            letter-spacing: 0.5px;
+        }
+
+        .cert-header-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* =========================================================
+           LIST GROUP & ITEM CARDS (IOS SQUIRCLE HIGH-GLOW DESIGN)
+           ========================================================= */
+        .list-group {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            border: 1px solid var(--border-card);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .list-group:hover {
+            border-color: rgba(255, 215, 0, 0.35);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.65), 0 0 18px rgba(255, 215, 0, 0.1);
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: background 0.25s, transform 0.2s;
+            position: relative;
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .list-item:hover {
+            background-color: rgba(255, 255, 255, 0.035);
+        }
+
+        .list-item:active {
+            background-color: rgba(255, 215, 0, 0.05);
+        }
+
+        .item-icon-wrapper {
+            position: relative;
+            margin-right: 14px;
+            flex-shrink: 0;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none !important;
+            border-radius: 14px;
+        }
+
+        /* Transparent touch-shield absorbs long-press / contextmenu on icons */
+        .item-icon-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 14px;
+            z-index: 5;
+            background: transparent;
+            pointer-events: auto;
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+            user-select: none !important;
+            -webkit-user-drag: none !important;
+        }
+
+        .item-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            object-fit: cover;
+            background: #111;
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            display: block;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            pointer-events: none !important;
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+            user-select: none !important;
+            -webkit-user-drag: none !important;
+        }
+
+        .list-item:hover .item-icon {
+            transform: scale(1.05);
+            border-color: var(--gold);
+            box-shadow: 0 0 14px var(--glow-gold-deep), 0 4px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .item-info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 0;
+            padding-right: 14px;
+        }
+
+        .item-title-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 3px;
+            flex-wrap: wrap;
+        }
+
+        .item-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--white);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .app-badge-tag {
+            font-size: 0.68em;
+            padding: 1px 7px;
+            border-radius: 8px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .badge-recommended {
+            background: rgba(255, 215, 0, 0.18);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            box-shadow: 0 0 8px var(--glow-gold-deep);
+        }
+
+        .badge-signed {
+            background: rgba(76, 175, 80, 0.18);
+            color: #81c784;
+            border: 1px solid #4caf50;
+        }
+
+        .badge-permasign {
+            background: rgba(33, 150, 243, 0.18);
+            color: #64b5f6;
+            border: 1px solid #2196f3;
+        }
+
+        .badge-revoked {
+            background: rgba(229, 57, 53, 0.18);
+            color: #ef5350;
+            border: 1px solid #e53935;
+        }
+
+        .item-subtitle {
+            font-size: 0.8rem;
+            color: var(--silver);
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .item-meta-tags {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 4px;
+            flex-wrap: wrap;
+        }
+
+        .item-meta-tag {
+            font-size: 0.7em;
+            color: #8b92a8;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 1px 6px;
+            border-radius: 6px;
+        }
+
+        /* Action Buttons with High Glow */
+        .item-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .btn-get {
+            background-color: transparent;
+            color: var(--silver);
+            border: 1.5px solid var(--silver);
+            padding: 7px 18px;
+            border-radius: 20px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 0.84rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            min-width: 76px;
+            box-sizing: border-box;
+        }
+
+        .btn-get:hover {
+            color: var(--white);
+            border-color: var(--white);
+            transform: translateY(-1px);
+        }
+
+        .btn-get:active {
+            transform: scale(0.96);
+        }
+
+        /* Primary Button (Gold High Glow) */
+        .btn-get.primary {
+            background: linear-gradient(135deg, #FFD700 0%, #FFC107 100%);
+            color: #0a0a0a;
+            border-color: #FFD700;
+            box-shadow: 0 0 16px var(--glow-gold), 0 4px 15px rgba(0, 0, 0, 0.5);
+            font-weight: 800;
+        }
+
+        .btn-get.primary:hover {
+            box-shadow: 0 0 26px var(--glow-gold), 0 6px 20px rgba(0, 0, 0, 0.65);
+            transform: translateY(-2px) scale(1.02);
+            color: #0a0a0a;
+        }
+
+        .btn-get.primary:active {
+            box-shadow: 0 0 12px var(--glow-gold);
+            transform: scale(0.96);
+        }
+
+        .btn-get.revoked {
+            border-color: #555;
+            color: #777;
+            background: transparent;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .btn-copy-link {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: var(--silver);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.85em;
+            transition: all 0.25s ease;
+        }
+
+        .btn-copy-link:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+            box-shadow: 0 0 10px var(--glow-gold);
+            transform: translateY(-1px);
+        }
+
+        /* Status Dots with Glow */
+        .status-dot {
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            margin-right: 6px;
+            flex-shrink: 0;
+        }
+
+        .status-signed {
+            background-color: var(--green-bright);
+            box-shadow: 0 0 10px var(--glow-green);
+        }
+
+        .status-revoked {
+            background-color: var(--red);
+            box-shadow: 0 0 10px var(--glow-red);
+        }
+
+        /* Expandable Domain Blocklist details */
+        .blocklist-expandable {
+            padding: 8px 18px 12px;
+            background: rgba(0, 0, 0, 0.25);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            font-size: 0.74rem;
+            color: #8b92a8;
+            display: none;
+        }
+
+        .blocklist-expandable.open {
+            display: block;
+        }
+
+        .blocklist-tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .blocklist-tag {
+            background: rgba(229, 57, 53, 0.12);
+            border: 1px solid rgba(229, 57, 53, 0.3);
+            color: #ff8a80;
+            padding: 1px 7px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.85em;
+        }
+
+        /* =========================================================
+           LOADER & RECOVERY ENGINE UI
+           ========================================================= */
+        .loader-container {
+            text-align: center;
+            padding: 45px 22px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border-card);
+            margin-top: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .radar-spinner-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 16px;
+            display: inline-block;
+            filter: drop-shadow(0 0 15px var(--glow-gold));
+            animation: spin 1.2s linear infinite;
+        }
+
+        .loader-title {
+            font-family: 'Outfit', sans-serif;
+            color: var(--white);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .loader-subtitle {
+            color: var(--silver);
+            font-size: 0.88rem;
+            line-height: 1.5;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Copy Toast */
+        .copy-toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translate(-50%, 20px);
+            background: rgba(18, 21, 32, 0.96);
+            border: 1.5px solid var(--gold);
+            color: var(--gold);
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-size: 0.86em;
+            font-weight: 600;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.85), 0 0 20px var(--glow-gold);
+            backdrop-filter: blur(14px);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 9999;
+            white-space: nowrap;
+        }
+
+        .copy-toast.show {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            padding: 26px 20px;
+            color: #7b8296;
+            font-size: 0.82em;
+            text-align: center;
+            border-top: 1px solid var(--border-subtle);
+            width: 100%;
+            max-width: 820px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        footer a {
+            color: var(--silver);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--gold);
+            text-shadow: 0 0 8px var(--glow-gold);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            header {
+                padding: 24px 16px 20px;
+                border-radius: 20px;
+            }
+
+            .list-item {
+                padding: 12px 14px;
+            }
+
+            .item-icon {
+                width: 44px;
+                height: 44px;
+            }
+
+            .item-title {
+                font-size: 0.94rem;
+            }
+
+            .btn-get {
+                padding: 6px 14px;
+                font-size: 0.78rem;
+                min-width: 68px;
+            }
+
+            .btn-copy-link {
+                width: 30px;
+                height: 30px;
+                font-size: 0.78em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Ambient backdrop glow orbs -->
+    <div class="ambient-glow glow-top-left"></div>
+    <div class="ambient-glow glow-bottom-right"></div>
+    <div class="ambient-glow glow-center"></div>
+
+    <!-- TOP TELEMETRY & NAVIGATION BAR -->
+    <div class="top-nav-bar">
+        <div class="telemetry-chip-group">
+            <div class="telemetry-chip" title="Live Anti-Revoke Protection Status">
+                <span class="status-dot-pulse"></span>
+                <span>Anti-Revoke Shield Active</span>
+            </div>
+            <div class="telemetry-chip" id="syncStatusChip" title="Global Edge CDN & Main Server Sync Status">
+                <span class="status-dot-pulse" id="syncStatusDot"></span>
+                <span id="syncStatusIcon"><i class="fas fa-bolt"
+                        style="color: var(--gold); font-size: 0.85em;"></i></span>
+                <span id="syncStatusText">Edge Sync</span>
+            </div>
+        </div>
+
+        <div class="nav-actions">
+            <a href="index.html" class="btn-nav-action" title="iOS Sideloading Knowledge, Fixes & FAQ">
+                <i class="fas fa-book-open" style="color: var(--cyan);"></i> Guide & FAQ
+            </a>
+            <button class="btn-nav-action" onclick="fetchStoreData(1, true)"
+                title="Refresh data from Edge / Main Server">
+                <i class="fas fa-rotate" id="refreshIcon"></i> Refresh
+            </button>
+            <a href="https://gplmods.webredirect.org" class="btn-nav-action" target="_blank"
+                title="GPL Mods Main Portal">
+                <i class="fas fa-globe" style="color: var(--gold);"></i> Main Site
+            </a>
+            <a href="https://t.me/+PFCCNra6NEk0YmRl" class="btn-nav-action" target="_blank" title="Telegram Channel">
+                <i class="fab fa-telegram" style="color: #0088cc;"></i> Telegram
+            </a>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER WITH HIGH-AURA GLOWING LOGO -->
+    <header>
+        <div class="logo-wrapper">
+            <div class="logo-glow-aura"></div>
+            <img src="./logo.png" alt="GPL Mods Logo" class="logo-img" draggable="false" oncontextmenu="return false;"
+                onerror="this.onerror=null; this.src='./favicon.png';">
+        </div>
+
+        <h1>
+            <span class="logo-gold-glow">GPL</span> <span class="logo-silver-glow">Mods</span>
+            <span class="logo-silver-glow">DNS & Signing</span>
+            <span class="archive-badge">Archive</span>
+        </h1>
+        <p>Enterprise Anti-Revoke DNS Profiles & Verified Sideloading App Repository for iOS</p>
+
+        <!-- RELATED HASHTAGS STRIP (INTERACTIVE FILTER PILLS) -->
+        <div class="hashtag-section">
+            <div class="hashtag-header-row">
+                <span><i class="fas fa-hashtag" style="color: var(--gold);"></i> Related Community Hashtags</span>
+                <button class="btn-copy-hashtags" onclick="copyAllHashtags()" title="Copy all hashtags to clipboard">
+                    <i class="fas fa-copy"></i> Copy Tags
+                </button>
+            </div>
+            <div class="hashtag-cloud" id="hashtagCloud">
+                <span class="hashtag-pill active" onclick="filterByHashtag('all', this)">#All</span>
+                <span class="hashtag-pill" onclick="filterByHashtag('GPLMods', this)">#GPLMods</span>
+                <span class="hashtag-pill" onclick="filterByHashtag('AntiRevoke', this)">#AntiRevoke</span>
+                <span class="hashtag-pill" onclick="filterByHashtag('iOSSigning', this)">#iOSSigning</span>
+                <span class="hashtag-pill" onclick="filterByHashtag('NoJailbreak', this)">#NoJailbreak</span>
+                <span class="hashtag-pill" onclick="filterByHashtag('ESign', this)">#ESign</span>
+                <span class="hashtag-pill" onclick="filterByHashtag('Scarlet', this)">#Scarlet</span>
+                <span class="hashtag-pill" onclick="filterByHashtag('TrollStore', this)">#TrollStore</span>
+                <span class="hashtag-pill" onclick="filterByHashtag('SideStore', this)">#SideStore</span>
+                <span class="hashtag-pill" onclick="filterByHashtag('LiveContainer', this)">#LiveContainer</span>
+                <span class="hashtag-pill" onclick="filterByHashtag('Feather', this)">#Feather</span>
+                <span class="hashtag-pill" onclick="filterByHashtag('KSign', this)">#KSign</span>
+                <span class="hashtag-pill" onclick="filterByHashtag('AltStore', this)">#AltStore</span>
+                <span class="hashtag-pill" onclick="filterByHashtag('DNSProfile', this)">#DNSProfile</span>
+                <span class="hashtag-pill" onclick="filterByHashtag('Sideloading', this)">#Sideloading</span>
+                <span class="hashtag-pill" onclick="filterByHashtag('IPASigner', this)">#IPASigner</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- CATEGORY TABS / QUICK FILTER -->
+        <div class="category-tabs">
+            <button class="tab-btn active" onclick="setCategoryTab('all', this)">
+                <i class="fas fa-layer-group"></i> All Archive <span class="tab-count-badge" id="countAll">--</span>
+            </button>
+            <button class="tab-btn" onclick="setCategoryTab('dns', this)">
+                <i class="fas fa-shield-halved"></i> Anti-Revoke DNS <span class="tab-count-badge"
+                    id="countDns">--</span>
+            </button>
+            <button class="tab-btn" onclick="setCategoryTab('apps', this)">
+                <i class="fas fa-mobile-screen"></i> Sideloaders & Signers <span class="tab-count-badge"
+                    id="countApps">--</span>
+            </button>
+            <button class="tab-btn" onclick="setCategoryTab('certs', this)">
+                <i class="fas fa-certificate"></i> Enterprise Certs <span class="tab-count-badge"
+                    id="countCerts">--</span>
+            </button>
+        </div>
+
+        <!-- COLLAPSIBLE HOW-TO GUIDE ACCORDION -->
+        <div class="guide-accordion" id="guideAccordion">
+            <div class="guide-header" onclick="toggleGuide()">
+                <div class="guide-header-title">
+                    <i class="fas fa-shield-halved"></i> How to Prevent App Revokes on iOS (Complete Guide)
+                </div>
+                <i class="fas fa-chevron-down guide-toggle-icon"></i>
+            </div>
+            <div class="guide-body">
+                <div class="step-item">
+                    <span class="step-badge">1</span>
+                    <div class="step-text">
+                        <strong>Install Anti-Revoke DNS:</strong> Tap <em>Install</em> on the <strong>GPL Mods
+                            Anti-Revoke Ultra</strong> profile in Safari. When prompted, tap <em>Allow</em>. Go to iOS
+                        <code>Settings &gt; Profile Downloaded &gt; Install</code>.
+                    </div>
+                </div>
+                <div class="step-item">
+                    <span class="step-badge">2</span>
+                    <div class="step-text">
+                        <strong>Enable DNS in iOS Settings:</strong> Confirm the DNS profile is selected in
+                        <code>Settings &gt; General &gt; VPN &amp; Device Management &gt; DNS</code> (set to <em>GPL
+                            Mods Anti-Revoke</em>).
+                    </div>
+                </div>
+                <div class="step-item">
+                    <span class="step-badge">3</span>
+                    <div class="step-text">
+                        <strong>Install Signed App:</strong> Select any signed app installer below (e.g. ESign, Scarlet,
+                        TrollStore) and tap <em>Get</em> to install directly onto your home screen via OTA.
+                    </div>
+                </div>
+                <div class="step-item">
+                    <span class="step-badge">4</span>
+                    <div class="step-text">
+                        <strong>Trust Enterprise Developer:</strong> Go to iOS
+                        <code>Settings &gt; General &gt; VPN &amp; Device Management</code>, select the Enterprise
+                        Certificate, and tap <em>Trust</em>. On iOS 16+, make sure <em>Developer Mode</em> is on in
+                        <code>Settings &gt; Privacy &amp; Security</code>.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LIVE SEARCH BAR -->
+        <div class="search-box-wrapper">
+            <i class="fas fa-search search-icon-left"></i>
+            <input type="text" id="searchInput" class="search-input"
+                placeholder="Search DNS profiles or signed apps (e.g. ESign, Scarlet, TrollStore, AdGuard)..."
+                autocomplete="off" oninput="handleSearch(this.value)">
+            <button id="searchClearBtn" class="search-clear-btn" onclick="clearSearch()" title="Clear search">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- MAIN DATA CONTENT -->
+        <div id="content">
+            <!-- Initial Loading State -->
+            <div class="loader-container" id="loading-box">
+                <i class="fas fa-satellite-dish radar-spinner-icon"></i>
+                <div class="loader-title">Connecting to DNS Edge Cache...</div>
+                <div class="loader-subtitle" id="loading-text">Synchronizing the latest enterprise certificates and
+                    anti-revoke DNS profiles.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="copy-toast" id="copyToast">
+        <i class="fas fa-check-circle"></i> Filter applied!
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <span>&copy; 2026 GPL Mods Official. All Rights Reserved.</span>
+        <span>&bull;</span>
+        <a href="https://gplmods.webredirect.org" target="_blank">Portal</a>
+        <span>&bull;</span>
+        <a href="https://gplmods.freeddns.org" target="_blank">Archive DNS</a>
+        <span>&bull;</span>
+        <a href="https://t.me/+PFCCNra6NEk0YmRl" target="_blank"><i class="fab fa-telegram"></i> Telegram Updates</a>
+    </footer>
+
+    <script>
+        // --- 1. ARCHIVE DEFAULT CATALOG (VERIFIED FALLBACK & OFFLINE RESILIENCE) ---
+        const ARCHIVE_DNS_PROFILES = [
+            {
+                name: 'GPL Mods Anti-Revoke Ultra',
+                description: 'Official encrypted DNS profile blocking Apple OCSP revocation servers (ocsp.apple.com, valid.apple.com). Prevents certificate blacklisting.',
+                configUrl: './profiles/gplmods-antirevoke.mobileconfig',
+                iconUrl: './favicon.png',
+                isRecommended: true,
+                tags: ['antirevoke', 'gplmods', 'dnsprofile', 'applecertificates'],
+                dohUrl: 'https://dns.adguard-dns.com/dns-query',
+                blockedDomains: ['ocsp.apple.com', 'ocsp2.apple.com', 'valid.apple.com', 'crl.apple.com', 'appattest.apple.com']
+            },
+            {
+                name: 'NextDNS Anti-Revoke Shield',
+                description: 'Zero-logging cloud DNS profile pre-configured with iOS certificate revoke blocklists and telemetry filters.',
+                configUrl: './profiles/nextdns-antirevoke.mobileconfig',
+                iconUrl: './favicon.png',
+                isRecommended: false,
+                tags: ['antirevoke', 'dnsprofile'],
+                dohUrl: 'https://apple.nextdns.io',
+                blockedDomains: ['ocsp.apple.com', 'valid.apple.com', 'crl.apple.com']
+            },
+            {
+                name: 'AdGuard Anti-Revoke & Privacy DNS',
+                description: 'High-speed privacy DNS profile blocking ads, trackers, and Apple certificate validation services.',
+                configUrl: 'https://dns.adguard-dns.com/dns-query',
+                iconUrl: './favicon.png',
+                isRecommended: false,
+                tags: ['antirevoke', 'dnsprofile'],
+                dohUrl: 'https://dns.adguard-dns.com/dns-query',
+                blockedDomains: ['ocsp.apple.com', 'ocsp2.apple.com', 'valid.apple.com']
+            }
+        ];
+
+        const ARCHIVE_CERTIFICATES = [
+            {
+                name: 'GPL Enterprise Active Cert (China Continent)',
+                status: 'Signed',
+                apps: [
+                    {
+                        appName: 'ESign (Easy Sign)',
+                        iconUrl: 'icons/esign.png',
+                        plistUrl: 'https://gplmods.webredirect.org/ota/esign.plist',
+                        badge: 'Signed',
+                        badgeClass: 'badge-signed',
+                        tags: ['esign', 'iossigning', 'nojailbreak', 'ipasigner', 'sideloading'],
+                        description: 'Enterprise On-Device IPA Signer with p12 import, custom dylib inject & tweak menu.'
+                    },
+                    {
+                        appName: 'Scarlet Alpha',
+                        iconUrl: 'icons/scarlet.png',
+                        plistUrl: 'https://gplmods.webredirect.org/ota/scarlet.plist',
+                        badge: 'Signed',
+                        badgeClass: 'badge-signed',
+                        tags: ['scarlet', 'iossigning', 'sideloading'],
+                        description: 'Modern iOS app installer & repo manager for direct OTA IPA sideloading.'
+                    },
+                    {
+                        appName: 'LiveContainer',
+                        iconUrl: 'icons/livecontainer.png',
+                        plistUrl: 'https://gplmods.webredirect.org/ota/livecontainer.plist',
+                        badge: 'Signed',
+                        badgeClass: 'badge-signed',
+                        tags: ['livecontainer', 'sideloading', 'nojailbreak'],
+                        description: 'Run multiple unsigned iOS apps inside a single container without hitting the 3-app limit.'
+                    },
+                    {
+                        appName: 'Feather Signer',
+                        iconUrl: 'icons/feather.png',
+                        plistUrl: 'https://gplmods.webredirect.org/ota/feather.plist',
+                        badge: 'Signed',
+                        badgeClass: 'badge-signed',
+                        tags: ['feather', 'iossigning', 'ipasigner'],
+                        description: 'Open-source on-device iOS app signer written in Swift with modern liquid UI.'
+                    },
+                    {
+                        appName: 'KSign Signer',
+                        iconUrl: 'icons/ksign.png',
+                        plistUrl: 'https://gplmods.webredirect.org/ota/ksign.plist',
+                        badge: 'Signed',
+                        badgeClass: 'badge-signed',
+                        tags: ['ksign', 'iossigning', 'ipasigner'],
+                        description: 'Lightweight IPA signing utility with certificate manager & direct install.'
+                    }
+                ]
+            },
+            {
+                name: 'CoreTrust & Sideload Tools (Permanent Immunity)',
+                status: 'Signed',
+                apps: [
+                    {
+                        appName: 'TrollStore Helper',
+                        iconUrl: 'icons/trollstore.png',
+                        plistUrl: 'https://gplmods.webredirect.org/ota/trollstore.plist',
+                        badge: 'Permasign',
+                        badgeClass: 'badge-permasign',
+                        tags: ['trollstore', 'antirevoke', 'nojailbreak', 'sideloading'],
+                        description: 'Permasigned app installer for iOS 14.0 - 17.0 via CoreTrust bug. Never revokes.'
+                    },
+                    {
+                        appName: 'SideStore',
+                        iconUrl: 'icons/sidestore.png',
+                        plistUrl: 'https://gplmods.webredirect.org/ota/sidestore.plist',
+                        badge: 'Signed',
+                        badgeClass: 'badge-signed',
+                        tags: ['sidestore', 'sideloading', 'nojailbreak'],
+                        description: 'On-device sideloading without computer using local WireGuard VPN loopback.'
+                    },
+                    {
+                        appName: 'AltStore Classic',
+                        iconUrl: 'icons/altstore.png',
+                        plistUrl: 'https://gplmods.webredirect.org/ota/altstore.plist',
+                        badge: 'Signed',
+                        badgeClass: 'badge-signed',
+                        tags: ['altstore', 'sideloading'],
+                        description: 'Alternative app marketplace & automatic sideloading refresher.'
+                    }
+                ]
+            }
+        ];
+
+        // --- 2. LOCAL APP ICONS REGISTRY ---
+        const LOCAL_APP_ICONS = {
+            'altstore': 'icons/altstore.png',
+            'cydia': 'icons/cydia.png',
+            'droidify': 'icons/droidify.png',
+            'esign': 'icons/esign.png',
+            'feather': 'icons/feather.png',
+            'installer': 'icons/installer.png',
+            'ksign': 'icons/ksign.png',
+            'livecontainer': 'icons/livecontainer.png',
+            'neostore': 'icons/neostore.png',
+            'purepkg': 'icons/purepkg.png',
+            'saily': 'icons/saily.png',
+            'scarlet': 'icons/scarlet.png',
+            'sidestore': 'icons/sidestore.png',
+            'sileo': 'icons/sileo.png',
+            'trollstore': 'icons/trollstore.png',
+            'zebra': 'icons/zebra.png'
+        };
+
+        // --- 3. STATE MANAGEMENT & MULTI-TIER SERVER SYNC ---
+        const ENDPOINTS = {
+            // Tier 1: Cloudflare Edge Worker Cache (0ms global CDN cache proxy)
+            edge: 'https://ios-api-cach.gplmodsofficial.workers.dev',
+            // Tier 2: Main GPL Mods Production Server (Direct Node.js API with failover)
+            main: 'https://gplmods.webredirect.org/api/ios-store',
+            // Tier 2 Alt: Render Direct URL
+            renderAlt: 'https://gplmods.onrender.com/api/ios-store'
+        };
+        const CACHE_STORAGE_KEY = 'gpl_dns_store_cache_v2';
+
+        const contentDiv = document.getElementById('content');
+        const refreshIcon = document.getElementById('refreshIcon');
+        const searchInput = document.getElementById('searchInput');
+        const searchClearBtn = document.getElementById('searchClearBtn');
+        const copyToast = document.getElementById('copyToast');
+
+        let rawStoreData = {
+            dns: ARCHIVE_DNS_PROFILES,
+            certificates: ARCHIVE_CERTIFICATES
+        };
+        let activeFilter = 'all';
+        let activeCategoryTab = 'all';
+        let searchQuery = '';
+
+        // Instant Pre-hydration from LocalStorage if available (zero-latency offline readiness)
+        (function preHydrateFromLocalStorage() {
+            try {
+                const cached = localStorage.getItem(CACHE_STORAGE_KEY);
+                if (cached) {
+                    const parsed = JSON.parse(cached);
+                    if (parsed && ((parsed.dns && parsed.dns.length > 0) || (parsed.certificates && parsed.certificates.length > 0))) {
+                        rawStoreData = {
+                            dns: parsed.dns || ARCHIVE_DNS_PROFILES,
+                            certificates: parsed.certificates || ARCHIVE_CERTIFICATES
+                        };
+                        console.log('[GPL-DNS] Hydrated store from local snapshot:', parsed.source || 'cache');
+                    }
+                }
+            } catch (err) {
+                console.warn('[GPL-DNS] Pre-hydration failed, using baseline archive:', err);
+            }
+        })();
+
+        function updateSyncBadge(status, label) {
+            const dot = document.getElementById('syncStatusDot');
+            const iconSpan = document.getElementById('syncStatusIcon');
+            const textSpan = document.getElementById('syncStatusText');
+            if (!textSpan || !dot) return;
+
+            textSpan.textContent = label;
+            dot.className = 'status-dot-pulse';
+
+            if (status === 'edge') {
+                if (iconSpan) iconSpan.innerHTML = '<i class="fas fa-bolt" style="color: var(--gold); font-size: 0.85em;"></i>';
+            } else if (status === 'main') {
+                dot.classList.add('dot-gold');
+                if (iconSpan) iconSpan.innerHTML = '<i class="fas fa-server" style="color: var(--gold); font-size: 0.85em;"></i>';
+            } else if (status === 'cached') {
+                dot.classList.add('dot-cyan');
+                if (iconSpan) iconSpan.innerHTML = '<i class="fas fa-database" style="color: var(--cyan); font-size: 0.85em;"></i>';
+            } else if (status === 'archive') {
+                dot.classList.add('dot-silver');
+                if (iconSpan) iconSpan.innerHTML = '<i class="fas fa-box-archive" style="color: var(--silver); font-size: 0.85em;"></i>';
+            } else if (status === 'connecting') {
+                dot.classList.add('dot-amber');
+                if (iconSpan) iconSpan.innerHTML = '<i class="fas fa-arrows-rotate fa-spin" style="color: var(--amber); font-size: 0.85em;"></i>';
+            }
+        }
+
+        async function fetchWithTimeout(url, timeoutMs = 4000) {
+            const controller = new AbortController();
+            const timer = setTimeout(() => controller.abort(), timeoutMs);
+            try {
+                const response = await fetch(url, { signal: controller.signal });
+                clearTimeout(timer);
+                return response;
+            } catch (err) {
+                clearTimeout(timer);
+                throw err;
+            }
+        }
+
+        function resolveAppIcon(app) {
+            const rawIcon = (app.iconUrl || '').trim();
+
+            if ((rawIcon.startsWith('http://') || rawIcon.startsWith('https://')) && !rawIcon.includes('flaticon.com')) {
+                return rawIcon;
+            }
+
+            if (rawIcon) {
+                const clean = rawIcon.replace(/^(.\/|\/|icons\/)+/, '').toLowerCase();
+                const key = clean.replace(/\.(png|jpe?g|webp|svg)$/i, '');
+                if (LOCAL_APP_ICONS[key]) return LOCAL_APP_ICONS[key];
+                if (rawIcon.startsWith('icons/') || rawIcon.startsWith('./icons/')) return rawIcon;
+            }
+
+            const nameKey = (app.appName || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+            for (const [key, iconPath] of Object.entries(LOCAL_APP_ICONS)) {
+                if (nameKey.includes(key) || key.includes(nameKey)) {
+                    return iconPath;
+                }
+            }
+
+            return './logo.png';
+        }
+
+        function resolveDnsIcon(dns) {
+            const rawIcon = (dns.iconUrl || '').trim();
+            if ((rawIcon.startsWith('http://') || rawIcon.startsWith('https://')) && !rawIcon.includes('flaticon.com')) {
+                return rawIcon;
+            }
+            if (rawIcon && (rawIcon.startsWith('icons/') || rawIcon.startsWith('./icons/'))) {
+                return rawIcon;
+            }
+            return './favicon.png';
+        }
+
+        // --- 4. FETCH STORE DATA (MULTI-TIER LIVE SYNC & LOCAL FAILBACK) ---
+        async function fetchStoreData(retries = 1, isManual = false) {
+            if (refreshIcon) refreshIcon.classList.add('fa-spin');
+
+            let fetchedData = null;
+            let connectionSource = '';
+
+            // Step 1: Try Tier 1 (Cloudflare Edge Worker Cache)
+            try {
+                const edgeUrl = isManual ? `${ENDPOINTS.edge}?_t=${Date.now()}` : ENDPOINTS.edge;
+                const response = await fetchWithTimeout(edgeUrl, 4000);
+                if (response.ok) {
+                    const data = await response.json();
+                    if ((data.dns && data.dns.length > 0) || (data.certificates && data.certificates.length > 0)) {
+                        fetchedData = data;
+                        connectionSource = 'edge';
+                    }
+                }
+            } catch (edgeErr) {
+                console.warn("[GPL-DNS] Tier 1 (Edge Cache) unreachable or timed out, failing over to Main Server...", edgeErr.message);
+            }
+
+            // Step 2: Try Tier 2 (Direct Main Server via webredirect)
+            if (!fetchedData) {
+                try {
+                    updateSyncBadge('connecting', 'Connecting to Main Server...');
+                    const mainUrl = isManual ? `${ENDPOINTS.main}?_t=${Date.now()}` : ENDPOINTS.main;
+                    const response = await fetchWithTimeout(mainUrl, 4500);
+                    if (response.ok) {
+                        const data = await response.json();
+                        if ((data.dns && data.dns.length > 0) || (data.certificates && data.certificates.length > 0)) {
+                            fetchedData = data;
+                            connectionSource = 'main';
+                        }
+                    }
+                } catch (mainErr) {
+                    console.warn("[GPL-DNS] Tier 2 (Main Server) direct fetch failed:", mainErr.message);
+                }
+            }
+
+            // Step 2 Alt: Try Tier 2 Alt (Render Direct Endpoint)
+            if (!fetchedData && ENDPOINTS.renderAlt) {
+                try {
+                    const altUrl = isManual ? `${ENDPOINTS.renderAlt}?_t=${Date.now()}` : ENDPOINTS.renderAlt;
+                    const response = await fetchWithTimeout(altUrl, 4000);
+                    if (response.ok) {
+                        const data = await response.json();
+                        if ((data.dns && data.dns.length > 0) || (data.certificates && data.certificates.length > 0)) {
+                            fetchedData = data;
+                            connectionSource = 'main';
+                        }
+                    }
+                } catch (altErr) {
+                    console.warn("[GPL-DNS] Tier 2 Alt (Render Direct) fetch failed:", altErr.message);
+                }
+            }
+
+            // Process remote live data if acquired
+            if (fetchedData) {
+                // Merge DNS profiles: keep archive base and add/update from live server
+                let mergedDns = ARCHIVE_DNS_PROFILES.slice();
+                if (fetchedData.dns && fetchedData.dns.length > 0) {
+                    const existingNames = new Set(mergedDns.map(d => (d.name || '').toLowerCase()));
+                    fetchedData.dns.forEach(remoteDns => {
+                        const rName = (remoteDns.name || '').toLowerCase();
+                        if (!existingNames.has(rName)) {
+                            mergedDns.push(remoteDns);
+                        } else {
+                            const idx = mergedDns.findIndex(d => (d.name || '').toLowerCase() === rName);
+                            if (idx !== -1) {
+                                mergedDns[idx] = Object.assign({}, mergedDns[idx], remoteDns);
+                            }
+                        }
+                    });
+                }
+
+                // Merge Certificates: keep archive base and add/update from live server
+                let mergedCerts = ARCHIVE_CERTIFICATES.slice();
+                if (fetchedData.certificates && fetchedData.certificates.length > 0) {
+                    const existingCertNames = new Set(mergedCerts.map(c => (c.name || '').toLowerCase()));
+                    fetchedData.certificates.forEach(remoteCert => {
+                        const cName = (remoteCert.name || '').toLowerCase();
+                        if (!existingCertNames.has(cName)) {
+                            mergedCerts.push(remoteCert);
+                        } else {
+                            const idx = mergedCerts.findIndex(c => (c.name || '').toLowerCase() === cName);
+                            if (idx !== -1) {
+                                mergedCerts[idx] = Object.assign({}, mergedCerts[idx], remoteCert);
+                            }
+                        }
+                    });
+                }
+
+                rawStoreData = {
+                    dns: mergedDns,
+                    certificates: mergedCerts
+                };
+
+                // Persist snapshot in LocalStorage for instant failback & zero-latency next startup
+                try {
+                    localStorage.setItem(CACHE_STORAGE_KEY, JSON.stringify({
+                        timestamp: Date.now(),
+                        source: connectionSource,
+                        dns: mergedDns,
+                        certificates: mergedCerts
+                    }));
+                } catch (storageErr) {
+                    console.warn('[GPL-DNS] Could not save snapshot to localStorage:', storageErr);
+                }
+
+                if (connectionSource === 'edge') {
+                    updateSyncBadge('edge', 'Edge Sync Active');
+                    if (isManual) showToast('Sync complete: Edge Cache Up-to-date!');
+                } else {
+                    updateSyncBadge('main', 'Main Server Connected');
+                    if (isManual) showToast('Sync complete: Connected to Main Server!');
+                }
+
+                renderUI();
+            } else {
+                // Tier 3 & Tier 4 Failback
+                console.warn("[GPL-DNS] Live servers unreachable. Engaging Local Failback...");
+
+                let hasLocalStorage = false;
+                try {
+                    const cached = localStorage.getItem(CACHE_STORAGE_KEY);
+                    if (cached) {
+                        const parsed = JSON.parse(cached);
+                        if (parsed && ((parsed.dns && parsed.dns.length > 0) || (parsed.certificates && parsed.certificates.length > 0))) {
+                            rawStoreData = {
+                                dns: parsed.dns,
+                                certificates: parsed.certificates
+                            };
+                            hasLocalStorage = true;
+                        }
+                    }
+                } catch (e) { }
+
+                if (hasLocalStorage) {
+                    updateSyncBadge('cached', 'Offline Mode (Local Cache)');
+                    if (isManual) showToast('Offline mode: Using cached snapshot');
+                } else {
+                    rawStoreData = {
+                        dns: ARCHIVE_DNS_PROFILES,
+                        certificates: ARCHIVE_CERTIFICATES
+                    };
+                    updateSyncBadge('archive', 'Offline (Local Archive)');
+                    if (isManual) showToast('Offline mode: Using verified local archive');
+                }
+
+                renderUI();
+            }
+
+            if (refreshIcon) {
+                setTimeout(() => refreshIcon.classList.remove('fa-spin'), 600);
+            }
+        }
+
+        // --- 5. RENDER UI WITH HIGH GLOW, SEARCH, HASHTAGS & TABS ---
+        function renderUI() {
+            if (!rawStoreData) return;
+            const data = rawStoreData;
+            let html = '';
+
+            const q = searchQuery.toLowerCase().trim();
+            const tag = activeFilter.toLowerCase();
+            const tab = activeCategoryTab.toLowerCase();
+
+            // Section 1: DNS Profiles Filtering
+            const matchesDnsTab = (tab === 'all' || tab === 'dns');
+            const matchesDnsTag = (tag === 'all' || tag === 'gplmods' || tag === 'antirevoke' || tag === 'dnsprofile' || tag === 'applecertificates');
+
+            let filteredDns = [];
+            if (matchesDnsTab && matchesDnsTag) {
+                filteredDns = (data.dns || []).filter(dns => {
+                    const name = (dns.name || '').toLowerCase();
+                    const desc = (dns.description || '').toLowerCase();
+                    const dnsTags = (dns.tags || []).join(' ').toLowerCase();
+
+                    // Query search
+                    if (q && !name.includes(q) && !desc.includes(q)) return false;
+
+                    // Hashtag check
+                    if (tag === 'all') return true;
+                    if (dnsTags.includes(tag) || name.includes(tag) || desc.includes(tag)) return true;
+
+                    return false;
+                });
+            }
+
+            if (filteredDns.length > 0) {
+                html += `
+                    <div class="section-heading">
+                        <div class="section-heading-left">
+                            <i class="fas fa-shield-halved"></i> Anti-Revoke DNS Profiles
+                        </div>
+                        <span class="section-count-chip">${filteredDns.length} Available</span>
+                    </div>
+                    <div class="list-group">
+                `;
+                filteredDns.forEach((dns, idx) => {
+                    const icon = resolveDnsIcon(dns);
+                    const blockId = `blocklist-${idx}`;
+                    const hasBlocklist = dns.blockedDomains && dns.blockedDomains.length > 0;
+
+                    html += `
+                        <div class="list-item">
+                            <div class="item-icon-wrapper">
+                                <img src="${icon}" class="item-icon" draggable="false" oncontextmenu="return false;" onerror="this.onerror=null; this.src='./favicon.png';">
+                            </div>
+                            <div class="item-info">
+                                <div class="item-title-row">
+                                    <div class="item-title">${escapeHtml(dns.name)}</div>
+                                    ${dns.isRecommended ? '<span class="app-badge-tag badge-recommended"><i class="fas fa-star"></i> Recommended</span>' : ''}
+                                </div>
+                                <div class="item-subtitle">${escapeHtml(dns.description)}</div>
+                                <div class="item-meta-tags">
+                                    <span class="item-meta-tag"><i class="fas fa-lock"></i> Encrypted DoH</span>
+                                    <span class="item-meta-tag"><i class="fas fa-ban"></i> Zero Revokes</span>
+                                    ${hasBlocklist ? `<a href="javascript:void(0)" onclick="toggleBlocklist('${blockId}')" style="color:var(--gold); text-decoration:none; font-size:0.7em; margin-left:4px;"><i class="fas fa-eye"></i> View Blocked Hosts</a>` : ''}
+                                </div>
+                            </div>
+                            <div class="item-actions">
+                                ${dns.dohUrl ? `
+                                    <button class="btn-copy-link" onclick="copyDohUrl('${dns.dohUrl}')" title="Copy DoH Endpoint URL">
+                                        <i class="fas fa-link"></i>
+                                    </button>
+                                ` : ''}
+                                <a href="${dns.configUrl}" class="btn-get ${dns.isRecommended ? 'primary' : ''}">
+                                    ${dns.isRecommended ? '<i class="fas fa-download"></i> Install' : 'Install'}
+                                </a>
+                            </div>
+                        </div>
+                    `;
+
+                    if (hasBlocklist) {
+                        html += `
+                            <div class="blocklist-expandable" id="${blockId}">
+                                <strong>Blocked Apple Verification Hosts:</strong>
+                                <div class="blocklist-tag-cloud">
+                                    ${dns.blockedDomains.map(host => `<span class="blocklist-tag">${escapeHtml(host)}</span>`).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }
+                });
+                html += `</div>`;
+            }
+
+            // Section 2: Certificates & Signed Apps
+            const matchesAppTab = (tab === 'all' || tab === 'apps' || tab === 'certs');
+            let totalAppsRendered = 0;
+
+            if (matchesAppTab && data.certificates && data.certificates.length > 0) {
+                data.certificates.forEach(cert => {
+                    const isRevoked = cert.status === 'Revoked';
+                    const statusClass = isRevoked ? 'status-revoked' : 'status-signed';
+
+                    let filteredApps = (cert.apps || []).filter(app => {
+                        const name = (app.appName || '').toLowerCase();
+                        const desc = (app.description || '').toLowerCase();
+                        const appTags = (app.tags || []).join(' ').toLowerCase();
+
+                        // Query search check
+                        if (q && !name.includes(q) && !desc.includes(q)) return false;
+
+                        // Tab specific check: if 'certs' tab, we show all cert apps
+                        if (tab === 'certs') return true;
+
+                        // Hashtag filter check
+                        if (tag === 'all') return true;
+                        if (tag === 'gplmods' || tag === 'iossigning' || tag === 'sideloading') return true;
+                        if (appTags.includes(tag) || name.includes(tag) || desc.includes(tag)) return true;
+
+                        return false;
+                    });
+
+                    if (filteredApps.length > 0) {
+                        totalAppsRendered += filteredApps.length;
+                        html += `
+                            <div class="cert-header">
+                                <div class="cert-header-left">
+                                    <span class="status-dot ${statusClass}"></span>
+                                    <span>${escapeHtml(cert.name)}</span>
+                                    ${isRevoked ? '<span style="color: var(--red); font-size: 0.76em; font-weight:700;">(Revoked)</span>' : '<span style="color: var(--green-bright); font-size: 0.76em; font-weight:700;">(Active)</span>'}
+                                </div>
+                                <span class="section-count-chip">${filteredApps.length} Apps</span>
+                            </div>
+                            <div class="list-group" style="${isRevoked ? 'opacity: 0.55; pointer-events: none;' : ''}">
+                        `;
+
+                        filteredApps.forEach(app => {
+                            const otaLink = `itms-services://?action=download-manifest&url=${encodeURIComponent(app.plistUrl)}`;
+                            const appIcon = resolveAppIcon(app);
+                            const badge = app.badge || (isRevoked ? 'Revoked' : 'Active');
+                            const badgeClass = app.badgeClass || (isRevoked ? 'badge-revoked' : 'badge-signed');
+
+                            html += `
+                                <div class="list-item">
+                                    <div class="item-icon-wrapper">
+                                        <img src="${appIcon}" class="item-icon" draggable="false" oncontextmenu="return false;" onerror="this.onerror=null; this.src='./logo.png';">
+                                    </div>
+                                    <div class="item-info">
+                                        <div class="item-title-row">
+                                            <div class="item-title">${escapeHtml(app.appName)}</div>
+                                            <span class="app-badge-tag ${badgeClass}">${badge}</span>
+                                        </div>
+                                        <div class="item-subtitle">${escapeHtml(app.description || `Signed with ${cert.name}`)}</div>
+                                        <div class="item-meta-tags">
+                                            <span class="item-meta-tag"><i class="fas fa-apple-whole"></i> iOS 14 - 18+</span>
+                                            <span class="item-meta-tag"><i class="fas fa-cloud-arrow-down"></i> Direct OTA</span>
+                                        </div>
+                                    </div>
+                                    <div class="item-actions">
+                                        <button class="btn-copy-link" onclick="copyOtaUrl('${app.appName}', '${app.plistUrl}')" title="Copy Direct Manifest Link">
+                                            <i class="fas fa-share-nodes"></i>
+                                        </button>
+                                        <a href="${otaLink}" class="btn-get ${isRevoked ? 'revoked' : 'primary'}">
+                                            ${isRevoked ? 'Revoked' : '<i class="fas fa-arrow-down"></i> Get'}
+                                        </a>
+                                    </div>
+                                </div>
+                            `;
+                        });
+
+                        html += `</div>`;
+                    }
+                });
+            }
+
+            // Fallback empty view
+            if (!html) {
+                html = `
+                    <div class="loader-container">
+                        <i class="fas fa-search" style="color: var(--gold); font-size: 2.3rem; margin-bottom: 14px; filter: drop-shadow(0 0 12px var(--glow-gold));"></i>
+                        <div class="loader-title">No Profiles or Apps Match</div>
+                        <div class="loader-subtitle">No items match your filter "${escapeHtml(q || activeFilter)}". Try clearing your search or switching categories.</div>
+                        <button onclick="clearSearch(); filterByHashtag('all'); setCategoryTab('all');" class="btn-get primary" style="margin-top: 18px; padding: 10px 24px;">Reset All Filters</button>
+                    </div>
+                `;
+            }
+
+            contentDiv.innerHTML = html;
+            updateTabCounts();
+        }
+
+        // --- 6. TAB COUNTS & METRICS ---
+        function updateTabCounts() {
+            if (!rawStoreData) return;
+            const totalDns = (rawStoreData.dns || []).length;
+            let totalApps = 0;
+            (rawStoreData.certificates || []).forEach(c => totalApps += (c.apps || []).length);
+            const totalCerts = (rawStoreData.certificates || []).length;
+
+            const cAll = document.getElementById('countAll');
+            const cDns = document.getElementById('countDns');
+            const cApps = document.getElementById('countApps');
+            const cCerts = document.getElementById('countCerts');
+
+            if (cAll) cAll.textContent = totalDns + totalApps;
+            if (cDns) cDns.textContent = totalDns;
+            if (cApps) cApps.textContent = totalApps;
+            if (cCerts) cCerts.textContent = totalCerts;
+        }
+
+        // --- 7. INTERACTIVE SEARCH & HASHTAGS LOGIC ---
+        function handleSearch(val) {
+            searchQuery = val;
+            if (searchClearBtn) {
+                searchClearBtn.style.display = val ? 'block' : 'none';
+            }
+            renderUI();
+        }
+
+        function clearSearch() {
+            if (searchInput) {
+                searchInput.value = '';
+                handleSearch('');
+            }
+        }
+
+        function setCategoryTab(tab, el) {
+            activeCategoryTab = tab;
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(t => t.classList.remove('active'));
+            if (el) el.classList.add('active');
+            else {
+                const target = document.querySelector(`.tab-btn[onclick*="${tab}"]`);
+                if (target) target.classList.add('active');
+            }
+            renderUI();
+        }
+
+        function filterByHashtag(tag, el) {
+            activeFilter = tag;
+
+            // Highlight pill
+            const pills = document.querySelectorAll('.hashtag-pill');
+            pills.forEach(p => p.classList.remove('active'));
+            if (el) el.classList.add('active');
+            else {
+                const target = Array.from(pills).find(p => p.textContent.toLowerCase().includes(tag.toLowerCase()));
+                if (target) target.classList.add('active');
+            }
+
+            showToast(`Filter: #${tag}`);
+            renderUI();
+        }
+
+        function toggleGuide() {
+            const guide = document.getElementById('guideAccordion');
+            if (guide) guide.classList.toggle('open');
+        }
+
+        function toggleBlocklist(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('open');
+        }
+
+        function showToast(text) {
+            if (!copyToast) return;
+            copyToast.innerHTML = `<i class="fas fa-check-circle"></i> ${escapeHtml(text)}`;
+            copyToast.classList.add('show');
+            setTimeout(() => copyToast.classList.remove('show'), 2400);
+        }
+
+        function copyDohUrl(url) {
+            navigator.clipboard.writeText(url).then(() => {
+                showToast('DoH Server URL copied!');
+            }).catch(() => {
+                showToast('Copied: ' + url);
+            });
+        }
+
+        function copyOtaUrl(appName, plistUrl) {
+            const ota = `itms-services://?action=download-manifest&url=${encodeURIComponent(plistUrl)}`;
+            navigator.clipboard.writeText(ota).then(() => {
+                showToast(`${appName} OTA link copied!`);
+            }).catch(() => {
+                showToast('Copied OTA link!');
+            });
+        }
+
+        function copyAllHashtags() {
+            const tags = '#GPLMods #AntiRevoke #iOSSigning #NoJailbreak #ESign #Scarlet #TrollStore #SideStore #LiveContainer #Feather #KSign #AltStore #DNSProfile #Sideloading #IPASigner #AppleCertificates';
+            navigator.clipboard.writeText(tags).then(() => {
+                showToast('All hashtags copied to clipboard!');
+            }).catch(() => {
+                showToast('Hashtags copied!');
+            });
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            return String(text)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        // --- 6. IMAGE DOWNLOAD & LONG-PRESS EXTRACTION PROTECTION ---
+        (function initImageProtection() {
+            // Block desktop right-click context menu on images and shield wrappers
+            document.addEventListener('contextmenu', function (e) {
+                if (e.target.tagName === 'IMG' ||
+                    e.target.closest('.item-icon-wrapper') ||
+                    e.target.closest('.logo-wrapper') ||
+                    e.target.classList.contains('item-icon') ||
+                    e.target.classList.contains('logo-img')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
+            }, { capture: true });
+
+            // Block dragging images to desktop or other tabs
+            document.addEventListener('dragstart', function (e) {
+                if (e.target.tagName === 'IMG' ||
+                    e.target.closest('img') ||
+                    e.target.closest('.item-icon-wrapper') ||
+                    e.target.closest('.logo-wrapper')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
+            }, { capture: true });
+
+            // Neutralize mobile long-press callout timers (iOS Safari ActionSheet / Android Chrome sheet)
+            let touchTimer = null;
+            document.addEventListener('touchstart', function (e) {
+                if (e.target.closest('.item-icon-wrapper') ||
+                    e.target.closest('.logo-wrapper') ||
+                    e.target.tagName === 'IMG') {
+                    clearTimeout(touchTimer);
+                    touchTimer = setTimeout(() => {
+                        // Suppress synthetic touch-hold
+                    }, 250);
+                }
+            }, { passive: true });
+
+            document.addEventListener('touchend', function () {
+                if (touchTimer) clearTimeout(touchTimer);
+            }, { passive: true });
+
+            document.addEventListener('touchcancel', function () {
+                if (touchTimer) clearTimeout(touchTimer);
+            }, { passive: true });
+
+            // Prevent iOS Safari gesture sheets and selection
+            document.addEventListener('gesturestart', function (e) {
+                if (e.target.closest('.item-icon-wrapper') ||
+                    e.target.closest('.logo-wrapper') ||
+                    e.target.tagName === 'IMG') {
+                    e.preventDefault();
+                }
+            });
+        })();
+
+        // Start initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            renderUI();
+            fetchStoreData();
+        });
+
+        // Register Service Worker for PWA offline capabilities
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').then(reg => {
+                    console.log('[PWA] Service Worker registered in store:', reg.scope);
+                }).catch(err => {
+                    console.warn('[PWA] Service Worker registration failed:', err);
+                });
+            });
+        }
+    </script>
+    <script src="./pwa-install-popup.js"></script>
+</body>
+
+</html>

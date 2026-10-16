@@ -10088,9 +10088,24 @@ app.post('/upload-finalize/:fileId', ensureAuthenticated, upload.fields([
 // 8. API ROUTES
 // ===================================
 
-// --- NEW: iOS Store API Endpoint ---
+// --- NEW: iOS Store API Endpoint with full CORS support ---
+app.options('/api/ios-store', (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
+    res.set('Access-Control-Max-Age', '86400');
+    res.status(204).end();
+});
+
 app.get('/api/ios-store', async (req, res) => {
     try {
+        res.set('Access-Control-Allow-Origin', '*');
+        res.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+        res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
+        res.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+        res.set('Pragma', 'no-cache');
+        res.set('Expires', '0');
+
         const dnsProfiles = await IosDns.find().sort({ isRecommended: -1, createdAt: -1 });
         const certificates = await IosCert.find().sort({ createdAt: -1 });
         

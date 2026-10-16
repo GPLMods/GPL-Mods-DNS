@@ -141,6 +141,18 @@ export default {
             });
 
             if (!upstreamRes.ok) {
+                // If upstream returned error (e.g., 502/503 during Render spin-up), check if we have any cached data to serve as failback!
+                const staleFallback = await cache.match(primaryCacheKey);
+                if (staleFallback) {
+                    console.warn(`Upstream returned ${upstreamRes.status}, serving stale fallback from Cloudflare edge`);
+                    const fallbackResp = new Response(staleFallback.body, staleFallback);
+                    for (const [k, v] of Object.entries(corsHeaders)) {
+                        fallbackResp.headers.set(k, v);
+                    }
+                    fallbackResp.headers.set('X-GPL-Cache', 'STALE-FALLBACK');
+                    return fallbackResp;
+                }
+
                 const errText = await upstreamRes.text();
                 return new Response(errText, {
                     status: upstreamRes.status,
@@ -175,6 +187,18 @@ export default {
 
         } catch (fetchErr) {
             console.error('Failed to fetch from Render API:', fetchErr);
+            // Check if we can serve stale cache on network exception
+            const staleFallback = await cache.match(primaryCacheKey);
+            if (staleFallback) {
+                console.warn('Network error to upstream, serving stale fallback from Cloudflare edge');
+                const fallbackResp = new Response(staleFallback.body, staleFallback);
+                for (const [k, v] of Object.entries(corsHeaders)) {
+                    fallbackResp.headers.set(k, v);
+                }
+                fallbackResp.headers.set('X-GPL-Cache', 'STALE-FALLBACK');
+                return fallbackResp;
+            }
+
             return new Response(JSON.stringify({
                 error: 'Failed to communicate with upstream server',
                 details: fetchErr.message
